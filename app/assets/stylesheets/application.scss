@@ -1,0 +1,97 @@
+/*= require_self */
+/* 自作スタイルをここにまとめる（BootstrapはCDNで読み込み済み） */
+
+/* 全体の背景（Reactデモに寄せるなら） */
+body {
+  background-color: #f8fafc; /* Tailwindのslate-50相当 */
+}
+
+/* ---------------------------
+   Card hover
+--------------------------- */
+.card.card-hover {
+  transition: box-shadow 0.2s ease;
+}
+.card.card-hover:hover {
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.08);
+}
+
+/* ---------------------------
+   Section Title
+--------------------------- */
+.section-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ---------------------------
+   Chip (バッジ風)
+--------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #f1f3f5; /* 背景 */
+  color: #495057;      /* 文字 */
+}
+.chip.red   { background: #ffe3e3; color: #c92a2a; }
+.chip.green { background: #d3f9d8; color: #2b8a3e; }
+.chip.blue  { background: #d0ebff; color: #1971c2; }
+.chip.slate { background: #f1f3f5; color: #495057; }
+
+/* ---------------------------
+   Todo line-through
+--------------------------- */
+.todo-line input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: #6c757d; /* muted */
+}
+
+/* ---------------------------
+   Progress (小さめ)
+--------------------------- */
+.progress.progress-xs {
+  height: 6px;
+}
+.progress.progress-xs .progress-bar {
+  height: 6px;
+}
+
+/* ---------------------------
+   Avatar丸枠（頭文字）
+--------------------------- */
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background-color: #0f172a; /* slate-900 */
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.avatar.lg {
+  width: 56px;
+  height: 56px;
+  font-size: 1.25rem;
+}
+
+/* ---------------------------
+   Navbar調整
+--------------------------- */
+.navbar-brand {
+  font-weight: 600;
+}
+.navbar-nav .nav-link.active {
+  font-weight: 600;
+  color: #0f172a !important;
+}
+
+.nav-item + .nav-item {
+  margin-left: 2rem;
+}
