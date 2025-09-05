@@ -1,0 +1,30 @@
+/* 小さめプログレスバー */
+.progress.progress-xs { height: 6px; }
+.progress.progress-xs .progress-bar { height: 6px; }
+
+/* 取り消し線（チェックON時） */
+.todo-line input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: #6c757d; /* text-muted */
+}
+
+/* ミニ・チップ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  padding: .125rem .5rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  background: #f1f3f5;
+  color: #495057;
+}
+
+/* ホバー影 */
+.card.card-hover:hover {
+  box-shadow: 0 0.6rem 1.2rem rgba(0,0,0,.08);
+  transition: box-shadow .2s ease;
+}
+
+/* 細身の区切り */
+.section-title { font-weight: 700; font-size: 1rem; }
