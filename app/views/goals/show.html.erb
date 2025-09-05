@@ -1,10 +1,37 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @goal %>
-
-<div>
-  <%= link_to "Edit this goal", edit_goal_path(@goal) %> |
-  <%= link_to "Back to goals", goals_path %>
-
-  <%= button_to "Destroy this goal", @goal, method: :delete %>
-</div>
+<h5 class="mb-0">Goal詳細</h5>
+  <button class="btn btn-primary"">
+      <i class="bi bi-plus-lg me-1"></i> 日々のTODOを作成
+  </button>
+  <% content_for :title, "Goals" %>
+  <h1>Goals</h1>
+<div class="row g-3 mb-3">
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-white">3ヶ月後の目標</div>
+        <div class="card-body">
+          <h5 class="mb-2"><%= @goal.title %></h5>
+          <div class="progress"><div class="progress-bar bg-success" style="width:<%#= @quarter_progress %>%"><%#= @quarter_progress %>%</div>@quarter_progress</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-white">1ヶ月後の目標</div>
+        <div class="card-body">
+          <h5 class="mb-2"><%#= @month_goal&.title || "—" %>@month_goal&.title || "—" </h5>
+          <div class="progress"><div class="progress-bar bg-secondary" style="width:50%">50%</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-white">今週の目標</div>
+        <div class="card-body">
+          <h5 class="mb-2"><%#= @week_goal&.title || "—" %>@week_goal&.title || "—" </h5>
+          <div class="progress"><div class="progress-bar bg-primary" style="width:40%">40%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%= link_to "New goal", new_goal_path %>

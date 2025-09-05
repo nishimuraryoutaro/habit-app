@@ -1,9 +1,10 @@
 class GoalsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_goal, only: [ :show, :edit, :update, :destroy ]
 
 
   def index
-    @goals = Goal.all
+    @goals = current_user.goals.order(target_date: :asc)
   end
 
   def show
@@ -44,6 +45,9 @@ class GoalsController < ApplicationController
   end
 
   private
+    def set_goal
+      @goal = current_user.goals.find(params[:id])
+    end
     def goal_params
       params.require(:goal).permit(:title, :description, :target_date, :progress)
     end
