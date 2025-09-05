@@ -35,36 +35,37 @@
     </div>
   </div>
 <div class="row g-3">
-  <div class="col-12 col-xl-8">
-    <div class="row g-3">
-        <div class="col-12 col-md-4">
-          <div class="card shadow-sm h-100">
-            <div class="card-header bg-white fw-bold">年、月</div>
-            <div class="card-body">
-              <div class="calendar-grid">
-                <% ["月","火","水","木","金","土","日"].each do |w| %>
-                  <div class="calendar-cell calendar-head"><%= w %></div>
-                <% end %>
-              </div>
+<div class="col-12 col-xl-8">
+  <div class="row g-3">
+      <div class="col-12 col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white fw-bold">年、月</div>
+          <div class="card-body">
+            <div class="calendar-grid">
+              <% ["月","火","水","木","金","土","日"].each do |w| %>
+                <div class="calendar-cell calendar-head"><%= w %></div>
+              <% end %>
             </div>
           </div>
         </div>
-    </div>
-  </div>
-  <div class="col-12 col-xl-4">
-    <div class="card shadow-sm mb-3">
-      <div class="card-header bg-white">選択日の進捗</div>
-      <div class="card-body">
-        <div class="text-muted xsmall">日付: <span id="gdSelectedDateLabel">@selected_date</span></div>
-        <div class="progress my-2"><div id="gdDayProg" class="progress-bar bg-info" style="width:@day_progress%"> @day_progress</div></div>
-        <div class="text-muted xsmall">（その日につくったTODOの完了率）</div>
       </div>
-    </div>
-    <div class="card shadow-sm">
-      <div class="card-header bg-white">3ヶ月 合計進捗</div>
-      <div class="card-body">
-        <div class="progress"><div id="gdQuarterProg" class="progress-bar bg-success" style="width:<%#= @quarter_progress %>%">@quarter_progress%</div></div>
-        <div class="text-muted xsmall mt-2">（3ヶ月内に作成したTODOの完了率）</div>
+  </div>
+</div>
+  <div class="col-12 col-xl-4">
+      <div class="card shadow-sm mb-3">
+        <div class="card-header bg-white">選択日の進捗</div>
+        <div class="card-body">
+          <div class="text-muted xsmall">日付: <span id="gdSelectedDateLabel">@selected_date</span></div>
+          <div class="progress my-2"><div id="gdDayProg" class="progress-bar bg-info" style="width:@day_progress%"> @day_progress</div></div>
+          <div class="text-muted xsmall">（その日につくったTODOの完了率）</div>
+        </div>
+      </div>
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">3ヶ月 合計進捗</div>
+        <div class="card-body">
+          <div class="progress"><div id="gdQuarterProg" class="progress-bar bg-success" style="width:<%#= @quarter_progress %>%">@quarter_progress%</div></div>
+          <div class="text-muted xsmall mt-2">（3ヶ月内に作成したTODOの完了率）</div>
+        </div>
       </div>
     </div>
   </div>
