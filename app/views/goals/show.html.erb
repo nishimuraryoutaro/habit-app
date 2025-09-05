@@ -34,4 +34,22 @@
       </div>
     </div>
   </div>
+<div class="row g-3">
+<div class="col-12 col-xl-8">
+  <div class="row g-3">
+      <div class="col-12 col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white fw-bold">年、月</div>
+          <div class="card-body">
+            <div class="calendar-grid">
+              <% ["月","火","水","木","金","土","日"].each do |w| %>
+                <div class="calendar-cell calendar-head"><%= w %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
 <%= link_to "New goal", new_goal_path %>
