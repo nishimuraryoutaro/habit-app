@@ -56,6 +56,16 @@
       <div class="card card-hover">
         <div class="card-header fw-semibold">カレンダー（達成日は●）</div>
         <div class="card-body">
+          <div class="row row-cols-7 g-1">
+            <% (1..30).each do |d| %>
+              <% done = [1,3,5,7,10,12,14,17,18,20,21,24,25,27].include?(d) %>
+              <div class="col">
+                <div class="border text-center rounded py-2 <%= done ? 'bg-success-subtle border-success text-success' : 'text-muted' %>">
+                  <%= d %> <%= done ? "●" : "" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
 
