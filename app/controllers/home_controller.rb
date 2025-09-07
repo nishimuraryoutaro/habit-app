@@ -22,6 +22,5 @@ class HomeController < ApplicationController
     current_user.goals.find_by(id: params[:goal_id])
     end
     @final_goal = @focused_goal || current_user.goals.order(:target_date, :created_at).first
-
   end
 end
