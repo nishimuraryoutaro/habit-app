@@ -1,37 +1,35 @@
 <!-- app/views/home/index.html.erb -->
 <div class="container py-4">
   <!-- Hero / 最終目標 & 今週 -->
-  <div class="row g-4">
-    <div class="col-md-6">
-      <div class="card card-hover">
+  <div class="row g-3 mb-3">
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-white">最終目標 (3ヶ月後)</div>
         <div class="card-body">
-          <h6 class="text-muted mb-1">最終目標 (3ヶ月後)</h6>
-          <% if @goal %>
-            <div class="h5 fw-semibold"><%= @goal.title %></div>
-            <div class="d-flex justify-content-between align-items-center mb-1">
-              <small class="text-muted">締切: <%= @goal.target_date %></small>
-              <small class="fw-semibold"><%= @goal.progress %>%</small>
-            </div>
-            <div class="progress progress-xs">
-              <div class="progress-bar bg-success" style="width:<%= @goal.progress %>%"></div>
-            </div>
-          <% else %>
-            <p class="mb-2 text-muted">まだGoalがありません。</p>
-            <%= link_to "Goalを作成", new_goal_path, class: "btn btn-sm btn-primary" %>
-          <% end %>
+          <h5 class="mb-2"><%= @final_goal&.title || "—" %></h5>
+           <div class="progress"><div class="progress-bar bg-success" style="width:50%"></div></div>
         </div>
       </div>
     </div>
-
-    <div class="col-md-6">
-      <div class="card card-hover">
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-white">1ヶ月後の目標</div>
         <div class="card-body">
-          <h6 class="text-muted mb-1">今週の目標</h6>
+          <h5>weekly_goal</h5>
+          <div class="progress"><div class="progress-bar bg-secondary" style="width:50%">50%</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header bg-white">今週の目標</div>
+        <div class="card-body">
+          <h5>weekly_goal</h5>
+          <div class="progress"><div class="progress-bar bg-primary" style="width:40%">40%</div></div>
         </div>
       </div>
     </div>
   </div>
-
   <!-- 今日のタスク / チェックで取り消し線 -->
   <div class="row g-4 mt-1">
     <div class="col-lg-8">
