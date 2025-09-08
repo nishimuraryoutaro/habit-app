@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :daily_tasks, only: [:update]     # チェック切替用（Homeから）
-  resources :profiles,    only: [:show, :update]  # プロフィールで開始日・目的日を編集
+  resources :daily_tasks, only: [ :update ]     # チェック切替用（Homeから）
+  resources :profiles,    only: [ :show, :update ]  # プロフィールで開始日・目的日を編集
 end
