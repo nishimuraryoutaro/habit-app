@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_08_041127) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_08_041736) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "daily_tasks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "goal_id", null: false
+    t.string "title", null: false
+    t.date "date", null: false
+    t.boolean "done", default: false, null: false
+    t.integer "priority", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_daily_tasks_on_goal_id"
+    t.index ["user_id", "goal_id", "date"], name: "index_daily_tasks_on_user_id_and_goal_id_and_date"
+    t.index ["user_id"], name: "index_daily_tasks_on_user_id"
+  end
 
   create_table "goals", force: :cascade do |t|
     t.string "title"
@@ -49,6 +63,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_08_041127) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "daily_tasks", "goals"
+  add_foreign_key "daily_tasks", "users"
   add_foreign_key "goals", "users"
   add_foreign_key "sub_goals", "goals"
 end
