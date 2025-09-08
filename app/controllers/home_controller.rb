@@ -30,7 +30,8 @@ class HomeController < ApplicationController
   end
 
   if @goal.present?
-    # 選択された目標に関連するDailyTaskを取得
-    @todos_today = current_user.daily_tasks.where(date: @selected_date).order(position: :desc, created_at: :asc)
+    @todos_today = current_user.daily_tasks.where(date: @selected_date).order(position: :desc, created_at: :asc).limit(3)
+  else
+    @todos_today = DailyTask.none
   end
 end
