@@ -1,18 +1,19 @@
+# config/routes.rb
 Rails.application.routes.draw do
-  resources :goals
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "home#index"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  resources :goals do
+    member do
+      # カレンダーから開く「1日TODO編集フォーム（HTML/Frameで表示）」
+      get  :day_editor
+      # フォームで保存（1日の3件をまとめて更新）
+      post :save_day
+      # 「いいね（今日を達成）」= 選択日の3件を完了にしてCheckinを作成
+      post :complete_day
+    end
+  end
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
-  root to: "home#index"
-  resources :goals
+  resources :daily_tasks, only: [:update]     # チェック切替用（Homeから）
+  resources :profiles,    only: [:show, :update]  # プロフィールで開始日・目的日を編集
 end

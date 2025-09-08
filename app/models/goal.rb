@@ -1,6 +1,4 @@
 class Goal < ApplicationRecord
   belongs_to :user
-
-  validates :title, presence: true
-  validates :progress, inclusion: { in: 0..100 }
+  has_many :daily_tasks, dependent: :destroy
 end
