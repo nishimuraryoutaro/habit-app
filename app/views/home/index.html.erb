@@ -33,13 +33,12 @@
 
   <div class="row g-4 mt-1">
     <div class="col-lg-8">
-      <div class="card card-hover h-100">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <span class="section-title">今日のタスク</span>
-        <div class="card-footer">
-          <p>今日のタスク追加</p>
-          <p>一覧へ</p>
-        </div>
+      <div class="card-header bg-white d-flex align-items-center justify-content-between">
+        <h6 class="mb-0">今日のタスク（<%= l(@selected_date) %>）</h6>
+        <% todos = @todos_today || [] %>
+        <small class="text-muted">
+          <%= @done_count %>/<%= @total_count %> 完了
+        </small>
       </div>
     </div>
 
