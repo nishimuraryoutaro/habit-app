@@ -28,4 +28,9 @@ class HomeController < ApplicationController
       @goal = current_user.goals.order(:created_at).first
     end
   end
+
+  if @goal.present?
+    # 選択された目標に関連するDailyTaskを取得
+    @todos_today = current_user.daily_tasks.where(date: @selected_date).order(position: :desc, created_at: :asc)
+  end
 end
