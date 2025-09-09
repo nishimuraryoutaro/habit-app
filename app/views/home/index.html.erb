@@ -53,7 +53,7 @@
     </div>
   </div>
   <ul class="list-group list-group-flush">
-    <% @todos_today.each do |t| %>
+    <% Array(@todos_today).each do |t| %>
       <%= render "daily_tasks/row_editable", task: t %>
     <% end %>
   </ul>
