@@ -1,0 +1,13 @@
+<!-- app/views/daily_tasks/_row_editable.html.erb -->
+<li class="list-group-item d-flex align-items-center">
+  <%= form_with model: task,url: daily_task_path(task),method: :patch, class: "d-flex align-items-center w-100 gap-2" do |f| %>
+
+    <div class="form-check"><%= f.check_box :done,class: "form-check-input",checked: task.done, onchange: "this.form.requestSubmit()" %>
+    </div>
+    <%= f.text_field :title,class: "form-control",value: task.title,placeholder: "タイトルを入力",onkeydown: "if(event.key==='Enter'){ this.form.requestSubmit(); }" %>
+
+    <%= f.number_field :position,class: "form-control",min: 0,style: "max-width:90px",onkeydown: "if(event.key==='Enter'){ this.form.requestSubmit(); }" %>
+
+    <%= f.submit "保存", class: "btn btn-outline-secondary btn-sm" %>
+  <% end %>
+</li>

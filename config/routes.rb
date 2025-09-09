@@ -4,14 +4,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :goals do
-    member do
-      # カレンダーから開く「1日TODO編集フォーム（HTML/Frameで表示）」
-      get  :day_editor
-      # フォームで保存（1日の3件をまとめて更新）
-      post :save_day
-      # 「いいね（今日を達成）」= 選択日の3件を完了にしてCheckinを作成
-      post :complete_day
-    end
+    resource :day_tasks, only: [ :edit, :create ], controller: "day_tasks"
   end
 
   resources :daily_tasks, only: [ :update ]     # チェック切替用（Homeから）

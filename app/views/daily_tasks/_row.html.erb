@@ -1,0 +1,10 @@
+<li class="list-group-item d-flex align-items-center">
+  <%= form_with model: task,url: daily_task_path(task),method: :patch,class: "d-flex align-items-center w-100" do |f| %>
+    <div class="form-check me-2">
+      <%= f.check_box :done,class: "form-check-input",checked: task.done,onchange: "this.form.requestSubmit()" %>
+    </div>
+    <span class="flex-grow-1 <%= 'task-done' if task.done %>">
+      <%= task.title %>
+    </span>
+  <% end %>
+</li>
