@@ -41,6 +41,6 @@ class HomeController < ApplicationController
     @days_with_todos =
       current_user.daily_tasks.where(goal: @goal).group(:date).count
   else
-    @days_with_todos = {} 
+    @days_with_todos = {}
   end
 end
