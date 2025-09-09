@@ -36,4 +36,11 @@ class HomeController < ApplicationController
   end
   @done_count  = @todos_today.where(done: true).count
   @total_count = @todos_today.size
+
+  if @goal.present?
+    @days_with_todos =
+      current_user.daily_tasks.where(goal: @goal).group(:date).count
+  else
+    @days_with_todos = {}
+  end
 end
