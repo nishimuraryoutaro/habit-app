@@ -19,8 +19,7 @@
             <%= f.date_field :start_date, id:"startDateInput", class:"form-control" %>
           </div>
           <div class="col">
-            <%= f.label :target_date, "目的日（未入力なら保存時に開始日+3ヶ月）", class:"form-label" %>
-            <% # 表示上は、未設定時にプレビュー値（開始+3ヶ月）を出しておく %>
+            <%= f.label :target_date, "目的日（自動で開始日+3ヶ月）", class:"form-label" %>
             <%= f.date_field :target_date,class:"form-control",value: (@goal.target_date || @target_preview) %>
           </div>
         </div>

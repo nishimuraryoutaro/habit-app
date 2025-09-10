@@ -12,8 +12,9 @@ class ProfilesController < ApplicationController
 
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(gaol_params)
+    @user = current_user
+    @goal = @user.goals.order(:created_at).first || @user.goals.build
+    if @goal.update(goal_params)
       redirect_to profile_path(@user), notice: "プロフィールを更新しました。"
     else
       @goal = @user.goals.order(:created_at).first || @user.goals.build
