@@ -1,10 +1,15 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-
   def show
     @user = User.find(params[:id])
     @goal = @user.goals.order(:created_at).first || @user.goals.build
+
+    @target_preview =
+      if @goal.target_date.blank? && @goal.start_date.present?
+        @goal.start_date + 3.months
+      end
   end
+
 
   def update
     @user = User.find(params[:id])
