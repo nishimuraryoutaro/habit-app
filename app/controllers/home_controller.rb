@@ -34,6 +34,7 @@ class HomeController < ApplicationController
   else
     @todos_today = DailyTask.none
   end
+
   @done_count  = @todos_today.where(done: true).count
   @total_count = @todos_today.size
 
@@ -43,4 +44,5 @@ class HomeController < ApplicationController
   else
     @days_with_todos = {}
   end
+
 end

@@ -7,34 +7,36 @@
    <div class="card shadow-sm">
     <div class="card-header bg-white">目標（期間）を編集</div>
     <div class="card-body">
-      <%= form_with model: @goal, url: profile_path(@user), method: :put do |f| %>
+      <%= form_with url: profile_current_goal_path(@user), method: :post do |f| %>
         <div class="mb-2">
-          <%= f.label :title, "タイトル", class:"form-label" %>
-          <%= f.text_field :title, class:"form-control", placeholder:"最終目標タイトル" %>
+          <label class="form-label">タイトル</label>
+          <%= text_field_tag "goal[title]", nil, class:"form-control", placeholder:"例：TOEIC 750" %>
         </div>
 
         <div class="row g-2">
           <div class="col">
-            <%= f.label :start_date, "開始日", class:"form-label" %>
-            <%= f.date_field :start_date, id:"startDateInput", class:"form-control" %>
+            <label class="form-label">開始日</label>
+            <%= date_field_tag "goal[start_date]", nil, class:"form-control" %>
           </div>
           <div class="col">
-            <%= f.label :target_date, "目的日（自動で開始日+3ヶ月）", class:"form-label" %>
-            <%= f.date_field :target_date,class:"form-control",value: (@goal.target_date || @target_preview) %>
+            <label class="form-label">目的日（空なら開始+3ヶ月）</label>
+            <%= date_field_tag "goal[target_date]", nil, class:"form-control" %>
           </div>
         </div>
 
         <div class="mb-3 mt-2">
-          <%= f.label :description, "説明（任意）", class:"form-label" %>
-          <%= f.text_area :description, rows:3, class:"form-control" %>
+          <label class="form-label">説明（任意）</label>
+          <%= text_area_tag "goal[description]", nil, rows:3, class:"form-control" %>
         </div>
 
-        <div class="d-flex gap-2">
-          <%= f.submit "保存", class:"btn btn-primary" %>
-          <% if @goal.persisted? %>
-            <%= link_to "Goal詳細へ", goal_path(@goal), class:"btn btn-outline-secondary" %>
-          <% end %>
-        </div>
+        <%= submit_tag "作成", class:"btn btn-success" %>
       <% end %>
-    </div>
+  </div>
+  <% @goals.each do |g| %>
+  <%= button_to "HOMEで表示",
+        profile_current_goal_path(@user, goal_id: g.id),
+        method: :post, class:"btn btn-outline-primary btn-sm" %>
+
+  <%= link_to "Goal詳細", goal_path(g), class:"btn btn-outline-secondary btn-sm ms-1" %>
+<% end %>
   </div>
