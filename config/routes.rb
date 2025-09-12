@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
 
-  resources :goals do
-    resource :day_tasks, only: [ :edit, :create ], controller: "day_tasks"
-  end
+  resources :goals, only: [ :index, :show, :edit, :new, :update, :destroy ]
+  resource :day_tasks, only: [ :edit, :create ]
+
 
   resources :daily_tasks, only: [ :update ]
 
