@@ -7,7 +7,7 @@
         <div class="card-body">
           <h6 class="text-muted mb-1">最終目標 (3ヶ月後)</h6>
           <% if @goal %>
-            <div class="h5 fw-semibold"><%= @goal.title %></div>
+            <div class="h5 fw-semibold"><%= current_goal.title %></div>
             <div class="d-flex justify-content-between align-items-center mb-1">
               <small class="text-muted">締切: <%= @goal.target_date %></small>
               <small class="fw-semibold"><%= @goal.progress %>%</small>

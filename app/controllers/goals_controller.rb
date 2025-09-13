@@ -51,4 +51,7 @@ class GoalsController < ApplicationController
     def goal_params
       params.require(:goal).permit(:title, :description, :target_date, :progress)
     end
+    def remember_current
+    session[:current_goal_id] = @goal.id
+    end
 end

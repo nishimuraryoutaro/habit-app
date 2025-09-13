@@ -11,6 +11,5 @@ Rails.application.routes.draw do
 
   resources :profiles,    only: [ :show, :update ]  do
      resources :goals, only: [ :create ], controller: "profiles/goals"
-     resource  :current_goal, only: [ :create ], controller: "profiles/current_goals"
   end
 end

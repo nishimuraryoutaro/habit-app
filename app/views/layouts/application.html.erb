@@ -29,7 +29,7 @@
       <div class="header_right ms-auto">
         <ul class="navbar-nav flex-row align-items-center justify-content-end">
           <% if user_signed_in? %>
-            <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Home", home_path_with_goal, class:"btn btn-link" %></li>
             <li class="nav-item">
               <% if user_signed_in? && (goal = current_user.goals.order(created_at: :desc).first) %>
                 <%= link_to "Goal詳細", goal_path(goal), class: "nav-link" %>

@@ -7,7 +7,7 @@
    <div class="card shadow-sm">
     <div class="card-header bg-white">目標（期間）を編集</div>
     <div class="card-body">
-      <%= form_with url: profile_current_goal_path(@user), method: :post do |f| %>
+      <%= form_with url: root_path(@user), method: :post do |f| %>
         <div class="mb-2">
           <label class="form-label">タイトル</label>
           <%= text_field_tag "goal[title]", nil, class:"form-control", placeholder:"例：TOEIC 750" %>
@@ -32,11 +32,28 @@
         <%= submit_tag "作成", class:"btn btn-success" %>
       <% end %>
   </div>
-  <% @goals.each do |g| %>
-  <%= button_to "HOMEで表示",
-        profile_current_goal_path(@user, goal_id: g.id),
-        method: :post, class:"btn btn-outline-primary btn-sm" %>
-
-  <%= link_to "Goal詳細", goal_path(g), class:"btn btn-outline-secondary btn-sm ms-1" %>
-<% end %>
+  <div class="card shadow-sm">
+    <div class="card-header bg-white">あなたの目標一覧</div>
+    <div class="card-body p-0">
+      <table class="table table-hover mb-0">
+        <thead><tr><th>タイトル</th><th>期間</th><th>説明</th><th class="text-end">操作</th></tr></thead>
+        <tbody>
+          <% @goals.each do |g| %>
+            <tr>
+              <td class="fw-semibold"><%= g.title %></td>
+              <td class="text-muted xsmall"><%= g.start_date || "—" %> 〜 <%= g.target_date || "—" %></td>
+              <td class="text-truncate" style="max-width:320px;"><%= g.description %></td>
+              <td class="text-end">
+                <%= button_to "HOMEで表示", root_path(@user, goal_id: g.id), method: :post, class:"btn btn-outline-primary btn-sm" %>
+                <%= link_to "Goal詳細", goal_path(g), class:"btn btn-outline-secondary btn-sm ms-1" %>
+              </td>
+            </tr>
+          <% end %>
+          <% if @goals.empty? %>
+            <tr><td colspan="4" class="text-muted small p-3">まだ目標がありません。</td></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>
